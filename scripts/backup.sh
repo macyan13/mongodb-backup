@@ -1,10 +1,10 @@
 #!/bin/bash
 
 MAX_BACKUPS=${MAX_BACKUPS}
-BACKUP_NAME=$(date +%Y.%m.%d.%H-%M-%S)
+BACKUP_NAME=$(date +%d.%m.%Y:%m.%H-%M-%S)
 
-echo "=> Backup started"
-if mongodump --out /backup/"${BACKUP_NAME}" --host="${MONGO_HOST}" --port="${MONGO_PORT}" --username="${MONGO_USERNAME}" --password="${MONGO_PASSWD}" --authenticationDatabase=admin --db="${MONGO_DB}" "${EXTRA_OPTS}" ;then
+echo "=> ${BACKUP_NAME} -  Backup started"
+if mongodump --archive=/backup/"${BACKUP_NAME}".gz --gzip --host="${MONGO_HOST}" --port="${MONGO_PORT}" --username="${MONGO_USERNAME}" --password="${MONGO_PASSWD}" --authenticationDatabase=admin --db="${MONGO_DB}" "${EXTRA_OPTS}" ;then
     echo "   Backup succeeded"
 else
     echo "   Backup failed"
