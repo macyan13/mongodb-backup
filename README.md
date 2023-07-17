@@ -11,7 +11,7 @@ Helper image to create mongodb archived backups via mongodump using cronjob to `
         --env MONGO_PASSWD=password \
         --env MONGO_DB=mongodb.db \
         --volume host.folder:/backup
-        macyan13/mongodb-backup
+        macyan/mongodb-backup
 
 ## Parameters
 
